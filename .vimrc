@@ -114,3 +114,16 @@ imap jj <Esc>
 "
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
+
+nnoremap <F8> :call ToggleMouse()<CR>
+function! ToggleMouse()
+  if &mouse == 'a'
+    set mouse=
+    echo "Mouse usage disabled"
+  else
+    set mouse=a
+    echo "Mouse usage enabled"
+  endif
+endfunction
+
+nnoremap <F7> :set nu!<CR>
