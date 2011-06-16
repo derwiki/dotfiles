@@ -1,0 +1,18 @@
+[user]
+	name = Adam Derewecki
+[log]
+	decorate = short
+[color]
+	ui = auto
+[pager]
+	status = true
+	show-branch = true
+[alias]
+	st = status
+	ci = commit
+	co = checkout
+	oneline = log --oneline
+	patch = add --patch
+	staged = diff --cached
+	amend = commit --amend
+	both = diff HEAD
