@@ -93,8 +93,10 @@ syntax on
 set incsearch
 set hlsearch
 set number
-set mouse=a
-set ttymouse=xterm2
+if has('mouse')
+  set mouse=a
+  set ttymouse=xterm2
+endif
 set ts=4
 set sw=4
 set nowrap
@@ -127,3 +129,6 @@ function! ToggleMouse()
 endfunction
 
 nnoremap <F7> :set nu!<CR>
+
+set textwidth=80
+highlight OverLength   cterm=none      ctermfg=1     ctermbg=0
