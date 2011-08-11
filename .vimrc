@@ -132,3 +132,10 @@ nnoremap <F7> :set nu!<CR>
 
 set textwidth=80
 highlight OverLength   cterm=none      ctermfg=1     ctermbg=0
+
+set backupdir=/tmp
+set directory=/tmp
+
+" pathogen stuff
+call pathogen#runtime_append_all_bundles()  " add .vim/bundle subdirs to runtime path
+call pathogen#helptags()                    " wasteful, but no shortage of grunt available
