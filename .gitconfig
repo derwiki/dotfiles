@@ -12,7 +12,9 @@
 	ci = commit
 	co = checkout
 	oneline = log --oneline
+    graph = log --oneline --graph
 	patch = add --patch
 	staged = diff --cached
 	amend = commit --amend
 	both = diff HEAD
+    sha1 = rev-parse HEAD
