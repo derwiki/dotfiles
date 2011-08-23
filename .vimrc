@@ -102,6 +102,10 @@ set sw=4
 set nowrap
 set cursorline
 set noexpandtab
+set wildmenu
+set showmatch   " Show matching parens as they come up
+set ruler       " Show the column number in the status bar
+set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 " gvim stuff
 colorscheme elflord
 
@@ -111,6 +115,7 @@ map - gT<CR>
 
 " quick edit mode escape
 imap jj <Esc>
+set backspace=2 " make the backspace key work
 "filetype on
 "filetype plugin on
 "
