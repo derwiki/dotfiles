@@ -18,3 +18,4 @@
 	amend = commit --amend
 	both = diff HEAD
     sha1 = rev-parse HEAD
+    ph = push origin HEAD
