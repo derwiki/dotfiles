@@ -116,6 +116,12 @@ map - gT<CR>
 " quick edit mode escape
 imap jj <Esc>
 set backspace=2 " make the backspace key work
+set scrolloff=5               " keep at least 5 lines above/below
+set sidescrolloff=5           " keep at least 5 lines left/right
+set lazyredraw                " don't redraw when don't have to
+set showmatch                 " show matching bracket
+nore ; :
+" more good stuff: http://stackoverflow.com/questions/164847/what-is-in-your-vimrc
 "filetype on
 "filetype plugin on
 "
