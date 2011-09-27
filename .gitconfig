@@ -1,21 +1,23 @@
 [user]
-	name = Adam Derewecki
+    name = Adam Derewecki
 [log]
-	decorate = short
+    decorate = short
 [color]
-	ui = auto
+    ui = auto
 [pager]
-	status = true
-	show-branch = true
+    status = true
+    show-branch = true
 [alias]
-	st = status
-	ci = commit
-	co = checkout
-	oneline = log --oneline
+    st = status
+    ci = commit
+    co = checkout
+    oneline = log --oneline
     graph = log --oneline --graph
-	patch = add --patch
-	staged = diff --cached
-	amend = commit --amend
-	both = diff HEAD
+    patch = add --patch
+    staged = diff --cached
+    amend = commit --amend
+    both = diff HEAD
     sha1 = rev-parse HEAD
     ph = push origin HEAD
+    poh = pull origin HEAD
+    rom = rebase origin/master
