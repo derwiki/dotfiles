@@ -19,3 +19,4 @@
     ph = push origin HEAD
     poh = pull origin HEAD
     rom = rebase origin/master
+    su = submodule update --init
