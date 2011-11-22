@@ -21,7 +21,7 @@
   # see `man git-apply' for other options
 
 [core]
-  excludesfile = /home/derwiki/.gitignore
+  excludesfile = ~/.gitignore
   # global gitignore, useful for hiding editor files
 
 [help]
@@ -69,14 +69,11 @@
   both = diff HEAD
   # shows modified+staged union diff
 
-  sha1 = rev-parse HEAD
+  sha1 = rev-parse HEAD ${1-`echo HEAD`}' -
   # sha1 of the current branch's HEAD
 
   abbrev = !sh -c 'git rev-parse --short ${1-`echo HEAD`}' -
   # shows a 7 character abbreviation of a reference, defaulting to HEAD
-
-  whatchanged = diff HEAD --name-only
-  # shows files changed from the last commit
 
   ph = push origin HEAD
   # push HEAD on the current branch to the branch on origin
