@@ -78,7 +78,7 @@
   ph = push origin HEAD
   # push HEAD on the current branch to the branch on origin
 
-  poh = pull origin HEAD --ff-only
+  poh = pull --rebase origin HEAD
   # pull upstream changes locally only if
   # - local is already up to date
   # - local changes can be cleanly rebased on top of origin and fast-forwarded
