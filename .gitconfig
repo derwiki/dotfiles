@@ -3,20 +3,103 @@
 [color]
     ui = auto
 [pager]
-    status = true
-    show-branch = true
+  status = true
+  show-branch = true
+
+[rebase]
+  autosquash = true
+  # for fixup hotness later
+
+[rerere]
+  enabled = true
+  # Reuse recorded resolution of conflicted merges
+  # see `man git-rerere'
+
+[apply]
+  whitespace = fix
+  # automagically fix whitespace
+  # see `man git-apply' for other options
+
+[core]
+  excludesfile = /home/derwiki/.gitignore
+  # global gitignore, useful for hiding editor files
+
+[help]
+  autocorrect = 10
+  # elcalafate:git derwiki$ git lgo
+  # WARNING: You called a Git command named 'lgo', which does not exist.
+  # Continuing under the assumption that you meant 'log'
+  # in 1.0 seconds automatically...
+
 [alias]
-    st = status
-    ci = commit
-    co = checkout
-    oneline = log --oneline
-    graph = log --oneline --graph
-    patch = add --patch
-    staged = diff --cached
-    amend = commit --amend
-    both = diff HEAD
-    sha1 = rev-parse HEAD
-    ph = push origin HEAD
-    poh = pull origin HEAD
-    rom = rebase origin/master
-    su = submodule update --init
+  st = status
+  ci = commit
+  co = checkout
+
+  oneline = log --oneline
+  # e14d631 (HEAD, origin/master, origin/HEAD, master) Merge branch 'maint'
+  # 0f64a5a Merge branch 'rr/misc-fixes'
+  # ef563de convert.c: Fix return type of git_path_check_eol()
+  # 1e501a7 (origin/maint) documentation fix: git difftool uses diff tools, not merge tools.
+  # 05bab3e config.c: Fix a static buffer overwrite bug by avoiding mkpath()
+  # 3a81f33 t5501-*.sh: Fix url passed to clone in setup test
+
+  graph = log --oneline --graph
+  # *   e14d631 (HEAD, origin/master, origin/HEAD, master) Merge branch 'maint'
+  # |\
+  # | * 1e501a7 (origin/maint) documentation fix: git difftool uses diff tools, not merge tools.
+  # * |   0f64a5a Merge branch 'rr/misc-fixes'
+  # |\ \
+  # | * | ef563de convert.c: Fix return type of git_path_check_eol()
+  # * | | 05bab3e config.c: Fix a static buffer overwrite bug by avoiding mkpath()
+  # * | | 3a81f33 t5501-*.sh: Fix url passed to clone in setup test
+
+  last = log -1
+  # show the commit message of HEAD
+
+  patch = add --patch
+  # add hunks of code interactively
+  # useful for separating a bunch of changes into logical commits
+
+  amend = commit --amend
+  # take staging and push it into the previous commit
+  # useful when adding small chunks to a WIP commit
+
+  staged = diff --cached
+  both = diff HEAD
+  # shows modified+staged union diff
+
+  sha1 = rev-parse HEAD
+  # sha1 of the current branch's HEAD
+
+  abbrev = !sh -c 'git rev-parse --short ${1-`echo HEAD`}' -
+  # shows a 7 character abbreviation of a reference, defaulting to HEAD
+
+  whatchanged = diff HEAD --name-only
+  # shows files changed from the last commit
+
+  ph = push origin HEAD
+  # push HEAD on the current branch to the branch on origin
+
+  poh = pull origin HEAD --ff-only
+  # pull upstream changes locally only if
+  # - local is already up to date
+  # - local changes can be cleanly rebased on top of origin and fast-forwarded
+
+  rom = rebase origin/master
+  # useful rebasing your topic branch against the newest version of master
+
+  fixup = !sh -c 'git commit --fixup $1 && \
+                  git stash && \
+                  git rebase -i $1~1 && \
+                  git stash pop' -
+  # amend to a previous commit:
+  #  git add file
+  #  git fixup HEAD^^
+  # will put the changes to 'file' to the commit two behind HEAD
+
+  ri = rebase --interactive --autosquash
+  # perform an interactive rebase from a given commitish
+
+  fresh = !git fetch --all && git reset --hard origin/master -
+  # fetch from all remotes and reset to origin/master
