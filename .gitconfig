@@ -35,6 +35,7 @@
   st = status
   ci = commit
   co = checkout
+  au = add -u
 
   oneline = log --oneline
   # e14d631 (HEAD, origin/master, origin/HEAD, master) Merge branch 'maint'
