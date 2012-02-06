@@ -1,3 +1,6 @@
+[user]
+    name = Adam Derewecki
+    email = adam@causes.com
 [log]
     decorate = short
 [color]
@@ -68,6 +71,7 @@
 
   staged = diff --cached
   both = diff HEAD
+  unmerged = diff --diff-filter=U --name-only
   # shows modified+staged union diff
 
   sha1 = !sh -c 'git rev-parse ${1-`echo HEAD`}' -
