@@ -48,7 +48,7 @@ au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 " Wrap text after a certain number of characters
-" Python: 79 
+" Python: 79
 " C: 79
 
 " Turn off settings in 'formatoptions' relating to comment formatting.
@@ -83,7 +83,10 @@ au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
 "``syntax on``
 
 " Automatically indent based on file type: ``filetype indent on``
+filetype plugin indent on
+
 " Keep indentation level from previous line: ``set autoindent``
+set autoindent
 
 " Folding based on indentation: ``set foldmethod=indent``
 
@@ -97,36 +100,41 @@ if has('mouse')
   set mouse=a
   set ttymouse=xterm2
 endif
-set ts=4
-set sw=4
+set ts=2
+set sw=2
 set nowrap
+set smartindent
+set autoindent
+set cindent
 set cursorline
-set noexpandtab
+set expandtab
 set wildmenu
 set showmatch   " Show matching parens as they come up
 set ruler       " Show the column number in the status bar
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 " gvim stuff
 colorscheme elflord
+set cc=80 " character color after 80 characters
 
 " switch tabs
-map = gt<CR>
-map - gT<CR>
+map = gt
+map - gT
 
 " quick edit mode escape
 imap jj <Esc>
 set backspace=2 " make the backspace key work
-set scrolloff=5               " keep at least 5 lines above/below
-set sidescrolloff=5           " keep at least 5 lines left/right
-set lazyredraw                " don't redraw when don't have to
-set showmatch                 " show matching bracket
-nore ; :
-" more good stuff: http://stackoverflow.com/questions/164847/what-is-in-your-vimrc
+
+map <Leader>r :!ruby -c %<CR>
+cmap Wq<CR> wq<CR>
+cmap Wqa<CR> wqa<CR>
+
 "filetype on
 "filetype plugin on
 "
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=1
+
+let g:CommandTMaxFiles = 30000
 
 nnoremap <F8> :call ToggleMouse()<CR>
 function! ToggleMouse()
@@ -143,6 +151,7 @@ nnoremap <F7> :set nu!<CR>
 
 set textwidth=80
 highlight OverLength   cterm=none      ctermfg=1     ctermbg=0
+autocmd BufWritePre * :%s/\s\+$//e " Remove trailing whitespace
 
 set backupdir=/tmp
 set directory=/tmp
@@ -150,3 +159,24 @@ set directory=/tmp
 " pathogen stuff
 call pathogen#runtime_append_all_bundles()  " add .vim/bundle subdirs to runtime path
 call pathogen#helptags()                    " wasteful, but no shortage of grunt available
+
+cabbrev Q q
+cabbrev Wq wq
+cabbrev W w
+cabbrev Qa qa
+cabbrev Wqa wqa
+cabbrev Set set
+
+" wean myself off the sauce
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
+
+nnoremap <F5> :GundoToggle<CR>
+
+" move around in vim splits with ctrl-<movement keys>
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
