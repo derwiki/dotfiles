@@ -34,6 +34,9 @@
   # Continuing under the assumption that you meant 'log'
   # in 1.0 seconds automatically...
 
+[push]
+  default = upstream
+
 [alias]
   st = status
   ci = commit
@@ -114,3 +117,5 @@
 
   su = submodule update --init
   # update or initialize each submodule
+
+  ten = log --oneline --graph -10
