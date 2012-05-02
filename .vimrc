@@ -114,7 +114,10 @@ set ruler       " Show the column number in the status bar
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
 " gvim stuff
 colorscheme elflord
-set cc=80 " character color after 80 characters
+
+if exists('+colorcolumn')
+  set cc=80 " character color after 80 characters
+endif
 
 " switch tabs
 map = gt
