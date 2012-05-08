@@ -41,3 +41,9 @@ caption always "%{+b kG} %=%{-s} %{.K}%-w%{.B}%n %{.G}%t%{.K}%+w%{.G} %{+s} %="
 #               #
 #
 termcapinfo xterm ‘bc@:bs@’
+
+bind k eval "focus up"
+bind j eval "focus down"
+bind h eval "focus left"
+bind l eval "focus right"
+bind f eval "fit"
