@@ -122,6 +122,10 @@ endif
 " switch tabs
 map = gt
 map - gT
+map <C-j> gT<CR>
+map <C-k> gt<CR>
+map <C-h> gT<CR>
+map <C-l> gt<CR>
 
 " quick edit mode escape
 imap jj <Esc>
