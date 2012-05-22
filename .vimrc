@@ -112,7 +112,8 @@ set wildmenu
 set showmatch   " Show matching parens as they come up
 set ruler       " Show the column number in the status bar
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
-" gvim stuff
+set shortmess+=A " ignore annoying swapfile messagesÂ
+set shortmess+=I " no splash screen
 colorscheme elflord
 
 if exists('+colorcolumn')
@@ -120,20 +121,22 @@ if exists('+colorcolumn')
 endif
 
 " switch tabs
-map = gt
-map - gT
-map <C-j> gT<CR>
-map <C-k> gt<CR>
-map <C-h> gT<CR>
-map <C-l> gt<CR>
+"map = gt
+"map - gT
+map <c-j> gT
+map <c-k> gt
+map <c-h> gT
+map <c-l> gt
 
 " quick edit mode escape
 imap jj <Esc>
 set backspace=2 " make the backspace key work
 
-map <Leader>r :!ruby -c %<CR>
-cmap Wq<CR> wq<CR>
-cmap Wqa<CR> wqa<CR>
+" turn off highlight when hitting return
+:nnoremap <CR> :nohlsearch<cr>
+
+" Insert a hash rocket with <c-l>
+imap <c-l> <space>=><space>
 
 "filetype on
 "filetype plugin on
@@ -153,12 +156,7 @@ function! ToggleMouse()
     echo "Mouse usage enabled"
   endif
 endfunction
-
 nnoremap <F7> :set nu!<CR>
-
-set textwidth=80
-highlight OverLength   cterm=none      ctermfg=1     ctermbg=0
-autocmd BufWritePre * :%s/\s\+$//e " Remove trailing whitespace
 
 set backupdir=/tmp
 set directory=/tmp
@@ -167,6 +165,7 @@ set directory=/tmp
 call pathogen#runtime_append_all_bundles()  " add .vim/bundle subdirs to runtime path
 call pathogen#helptags()                    " wasteful, but no shortage of grunt available
 
+" common pressed-shift-too-long typos
 cabbrev Q q
 cabbrev Wq wq
 cabbrev W w
@@ -180,10 +179,31 @@ noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
 
-nnoremap <F5> :GundoToggle<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MULTIPURPOSE TAB KEY
+" Indent if we're at the beginning of a line. Else, do completion.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
 
-" move around in vim splits with ctrl-<movement keys>
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" RENAME CURRENT FILE
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! RenameFile()
+    let old_name = expand('%')
+    let new_name = input('New file name: ', expand('%'), 'file')
+    if new_name != '' && new_name != old_name
+        exec ':saveas ' . new_name
+        exec ':silent !rm ' . old_name
+        redraw!
+    endif
+endfunction
+map <leader>n :call RenameFile()<cr>

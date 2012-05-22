@@ -119,3 +119,5 @@
   # update or initialize each submodule
 
   ten = log --oneline --graph -10
+
+  ridof = !sh -c 'wc -l $1 && git rm $1' -
