@@ -207,3 +207,8 @@ function! RenameFile()
     endif
 endfunction
 map <leader>n :call RenameFile()<cr>
+
+autocmd FileType markdown set smartindent
+autocmd FileType markdown set tabstop=2
+autocmd FileType markdown set shiftwidth=2
+autocmd FileType markdown set textwidth=80
