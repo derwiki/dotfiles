@@ -39,6 +39,7 @@
 
 [alias]
   st = status
+  ss = status --short
   ci = commit
   co = checkout
   au = add -u
@@ -112,7 +113,7 @@
   ri = rebase --interactive --autosquash
   # perform an interactive rebase from a given commitish
 
-  fresh = !sh -c 'git fetch --all && git reset --hard origin/master' -
+  fresh = !sh -c 'git checkout master && git resom' -
   # fetch from all remotes and reset to origin/master
 
   su = submodule update --init
@@ -121,3 +122,5 @@
   ten = log --oneline --graph -10
 
   ridof = !sh -c 'wc -l $1 && git rm $1' -
+
+  pg = push gerrit HEAD:refs/for/master
