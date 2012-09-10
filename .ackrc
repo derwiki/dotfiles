@@ -1,4 +1,6 @@
---ignore-dir=/home/adam/causes/spec/stories/data
+--ignore-dir=spec/stories/data
+--ignore-dir=coverage/
+--ignore-dir=vendor/rails
 --type-set=puppet=.pp
 --type-set=erb=.erb
 --pager=less -FRSX
