@@ -13,3 +13,4 @@ source $HOME/scripts/helpers.sh
 export PATH=$PATH:$HOME/bin
 export PATH=$PATH:$HOME/scripts/
 export PATH=$PATH:$HOME/src/devscripts/
+source /home/adam/scripts/git-completion.bash
