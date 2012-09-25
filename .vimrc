@@ -162,8 +162,7 @@ set backupdir=/tmp
 set directory=/tmp
 
 " pathogen stuff
-call pathogen#runtime_append_all_bundles()  " add .vim/bundle subdirs to runtime path
-call pathogen#helptags()                    " wasteful, but no shortage of grunt available
+call pathogen#infect()
 
 " common pressed-shift-too-long typos
 cabbrev Q q
