@@ -1,5 +1,5 @@
 export PATH=$PATH:$HOME/bin
-. ~/scripts/.git-completion.bash
+. ~/scripts/git-completion.bash
 
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
@@ -13,9 +13,9 @@ alias python='/opt/python2.7/bin/python'
 alias python2.7='/opt/python2.7/bin/python'
 PATH=$PATH:/opt/python2.7/bin
 
-source $HOME/scripts/helpers.sh
-export PATH=$PATH:$HOME/bin
-export PATH=$PATH:$HOME/scripts/
+. ~/scripts/helpers.sh
+export PATH=$PATH:~/bin
+export PATH=$PATH:~/scripts/
 
 export RUBY_HEAP_MIN_SLOTS=1000000
 export RUBY_HEAP_SLOTS_INCREMENT=1000000
