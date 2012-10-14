@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/bash -e
 
-for df in `git ls-files | grep '^\'`; do
+for df in `git ls-files | grep '^\.'`; do
   if [[ -e ~/$df ]]; then
     echo $df exists, deleting
     (cd ~ && rm $df)
