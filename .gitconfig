@@ -98,7 +98,7 @@
   from = !sh -c 'git fetch origin && git rebase origin/master' -
   # fetch origin and rebase against origin master
 
-  resom = !sh -c 'git fetch origin && git reset --hard origin/master' -
+  resom = !sh -c 'git fetch origin && git checkout master && git reset --hard origin/master' -
   # fetch origin and reset hard to origin/master
 
   fixup = !sh -c 'git commit --fixup $1 && \
