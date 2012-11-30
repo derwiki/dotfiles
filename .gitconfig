@@ -34,9 +34,6 @@
   # Continuing under the assumption that you meant 'log'
   # in 1.0 seconds automatically...
 
-[push]
-  default = upstream
-
 [alias]
   st = status
   ss = status --short
