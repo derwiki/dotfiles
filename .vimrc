@@ -119,3 +119,5 @@ autocmd FileType markdown set smartindent
 autocmd FileType markdown set tabstop=2
 autocmd FileType markdown set shiftwidth=2
 autocmd FileType markdown set textwidth=80
+
+nmap <leader>rh :%s/\v(:)@<!:([a-zA-Z_][a-zA-Z_0-9]*)(\s*)\=\>\s?/\2:\3/gc<cr>
