@@ -1,7 +1,10 @@
 --ignore-dir=spec/stories/data
 --ignore-dir=coverage/
 --ignore-dir=vendor/rails
+--ignore-dir=vendor/assets/javascripts
 --type-set=puppet=.pp
 --type-set=erb=.erb
+--type-set=scss=.scss
+--type-set=haml=.haml
 --pager=less -FRSX
 --type-add=ruby=haml
