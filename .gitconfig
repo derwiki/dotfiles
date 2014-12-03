@@ -120,5 +120,4 @@
 
   ridof = !sh -c 'wc -l $1 && git rm $1' -
 
-  pg = push gerrit HEAD:refs/for/master
   ma = checkout master
