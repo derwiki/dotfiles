@@ -16,3 +16,16 @@ export RUBY_GC_MALLOC_LIMIT=100000000
 export RUBY_HEAP_FREE_MIN=500000
 alias g=git
 alias gg='git grep'
+alias raquo='echo » | pbcopy'
+function tailfor
+{
+  tail -f log/development.log | grep $@
+}
+function def
+{
+  ag "def (self\.)?$@"
+}
+function f
+{
+  find . -iname "*$@*"
+}
