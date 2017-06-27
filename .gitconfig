@@ -121,3 +121,9 @@
   ridof = !sh -c 'wc -l $1 && git rm $1' -
 
   ma = checkout master
+  
+  cp = cherry-pick
+  sha1 = rev-parse HEAD
+  sha = rev-parse --short HEAD
+
+  recent = "!f() { git reflog | egrep -io 'moving from ([^[:space:]]+)' | awk '{ print $3 }' | awk ' !x[$0]++' | head -n${1-10}; }; f"
