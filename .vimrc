@@ -29,8 +29,9 @@ set wildmenu
 set showmatch   " Show matching parens as they come up
 set ruler       " Show the column number in the status bar
 set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)
-set shortmess+=A " ignore annoying swapfile messagesÂ
+set shortmess+=A " ignore annoying swapfile messagesÂ¬
 set shortmess+=I " no splash screen
+set paste
 colorscheme elflord
 
 if exists('+colorcolumn')
@@ -125,45 +126,3 @@ autocmd FileType markdown set shiftwidth=2
 autocmd FileType markdown set textwidth=80
 
 nmap <leader>rh :%s/\v(:)@<!:([a-zA-Z_][a-zA-Z_0-9]*)(\s*)\=\>\s?/\2:\3/gc<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Selecta Mappings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Run a given vim command on the results of fuzzy selecting from a given shell
-" command. See usage below.
-function! SelectaCommand(choice_command, selecta_args, vim_command)
-  try
-    let selection = system(a:choice_command . " | selecta " . a:selecta_args)
-  catch /Vim:Interrupt/
-    " Swallow the ^C so that the redraw below happens; otherwise there will be
-    " leftovers from selecta on the screen
-    redraw!
-    return
-  endtry
-  redraw!
-  exec a:vim_command . " " . selection
-endfunction
-
-function! SelectaFile(path)
-  call SelectaCommand("find " . a:path . "/* -type f", "", ":tabe")
-endfunction
-
-nnoremap <leader>f :call SelectaFile(".")<cr>
-nnoremap <leader>gv :call SelectaFile("app/views")<cr>
-nnoremap <leader>gc :call SelectaFile("app/controllers")<cr>
-nnoremap <leader>gm :call SelectaFile("app/models")<cr>
-nnoremap <leader>gh :call SelectaFile("app/helpers")<cr>
-nnoremap <leader>gl :call SelectaFile("lib")<cr>
-nnoremap <leader>gp :call SelectaFile("public")<cr>
-nnoremap <leader>gs :call SelectaFile("public/stylesheets")<cr>
-nnoremap <leader>gf :call SelectaFile("features")<cr>
-
-"Fuzzy select
-function! SelectaIdentifier()
-  " Yank the word under the cursor into the z register
-  normal "zyiw
-  " Fuzzy match files in the current directory, starting with the word under
-  " the cursor
-  call SelectaCommand("find * -type f", "-s " . @z, ":e")
-endfunction
-nnoremap <c-g> :call SelectaIdentifier()<cr>
