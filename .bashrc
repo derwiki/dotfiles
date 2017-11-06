@@ -18,6 +18,9 @@ alias g=git
 alias gg='git grep'
 alias raquo='echo » | pbcopy'
 
+alias h=heroku
+alias ho='heroku addons:open'
+
 function def
 {
   ag "def (self\.)?$@"
