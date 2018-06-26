@@ -10,7 +10,7 @@ export PATH="/Applications/Postgres.app/Contents/Versions/9.6/bin/:$PATH"
 export GIT_PS1_SHOWDIRTYSTATE=1
 export GIT_PS1_SHOWUNTRACKEDFILES=1
 
-export PS1='\h:\w$(__git_ps1 "\[\e[32m\][%s]\[\e[0m\]")$
+export PS1='\D{%F %T} \h:\w$(__git_ps1 "\[\e[32m\][%s]\[\e[0m\]")$
 $ '
 export EDITOR=vim
 
