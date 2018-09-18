@@ -93,7 +93,10 @@
   # useful rebasing your topic branch against the newest version of master
 
   from = !sh -c 'git fetch origin && git rebase origin/master' -
-  # fetch origin and rebase against origin master
+  # fetch origin and rebase on top of origin/master
+
+  fmom = !sh -c 'git fetch origin && git merge origin/master' -
+  # fetch origin and merge in origin/master
 
   resom = !sh -c 'git fetch origin && git checkout master && git reset --hard origin/master' -
   # fetch origin and reset hard to origin/master
