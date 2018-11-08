@@ -29,3 +29,23 @@ function f
 {
   find . -iname "*$@*"
 }
+# search python
+function sp
+{
+  /usr/local/bin/rg -p -tpy "$@" | less -XFR
+}
+# search javascript
+function sjs
+{
+  /usr/local/bin/rg -p -tjs "$@" | less -XFR
+}
+# pretty print JSON
+function jv
+{
+  cat $@ | python -m json.tool | less
+}
+# strip colorcodes
+function sc
+{
+  sed "s,$(printf '\033')\\[[0-9;]*[a-zA-Z],,g"   
+}
