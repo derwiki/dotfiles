@@ -49,6 +49,11 @@ function sc
 {
   sed "s,$(printf '\033')\\[[0-9;]*[a-zA-Z],,g"   
 }
+# pretty print sql                                                                 
+function ppsql                                                                     
+{                                                                                  
+  python -c "import sys;import sqlparse;print sqlparse.format(sys.stdin.read(), reindent=True, keyword_case='upper')"
+} 
 
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
