@@ -1,6 +1,7 @@
-[user]
-    name = Adam Derewecki
-    email = derewecki@gmail.com
+#[user]
+#   name = Morgan Holland
+#    email = morgan.holland@gmail.com
+
 [log]
     decorate = short
 [color]
